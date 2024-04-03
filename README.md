@@ -12,9 +12,10 @@ apt install sqlitebrowser
 
 2. Клонируем репозиторий
 git clone https://github.com/Nikolay1257/Python_BankDB.git
+
 cd Python_BankDB
 
-3. Миграция базы данных (создание таблиц)
+4. Миграция базы данных (создание таблиц)
 
 python3 create_db.py
 
