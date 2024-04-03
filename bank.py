@@ -16,7 +16,7 @@ def authorizacion():
         if results:
             card_pin = input("введите PIN-код: ")
             if card_pin == results[0]:
-                print("Добро пожаловать в банк!")
+                print("\nДобро пожаловать в банк!")
                 return card_pin
                 break
             else:
@@ -40,7 +40,7 @@ def replenish(input_balance):
     input_balance = int(input_balance)
     if input_balance >= 0 and input_balance < 10001:
         cursor.execute('UPDATE Users SET balance = balance + ? WHERE card_num = ?', (int(input_balance), users,))
-        print("ваш счет пополнен на: " + str(input_balance) + "$")
+        print("\nваш счет пополнен на: " + str(input_balance) + "$")
     else:
         print("\nизвените нельзя пополнить на сумму свыше 10 000$, обратитесь в банк")
 
@@ -50,7 +50,7 @@ def takeoff(balance):
         print("Ошибка пополнения")
     else:
         cursor.execute('UPDATE Users SET balance = balance - ? WHERE card_num = ?', (int(balance), users,))
-        print("с вашего счета снято: " + balance + "$")
+        print("\nс вашего счета снято: " + balance + "$")
 
 # Отобразить всех пользователейы
 def card(number):
@@ -84,11 +84,11 @@ def replenish_admin(num):
          if int(x) >=0:
              cursor.execute('UPDATE Users SET balance = balance + ? WHERE card_num = ?', (int(x), num,))
              connection.commit()
-             print("ваш счет пополнен на: " + x + "$\n")
+             print("\nваш счет пополнен на: " + x + "$\n")
          else:
-            print("извените нельзя пополнить, введите другую сумму")
+            print("извените нельзя пополнить, введите другую сумму\n")
      else:
-         print("\nданнорго пользователя нету\n")
+         print("\nпользователь не найден\n")
 
 
 # Снятие
@@ -100,11 +100,11 @@ def takeoff_admin(num):
          if int(x) >=0:
              cursor.execute('UPDATE Users SET balance = balance - ? WHERE card_num = ?', (int(x), num,))
              connection.commit()
-             print("с вашего счета снято: " + x + "$\n")
+             print("\nс вашего счета снято: " + x + "$\n")
          else:
-            print("извените нельзя снять, введите другую сумму")
+            print("\nизвените нельзя снять, введите другую сумму\n")
      else:
-         print("\nданнорго пользователя нету\n")
+         print("\nпользователь не найден\n")
 
 # Перевод между пользователями
 def money_transaction(card_minus):
@@ -124,11 +124,11 @@ def money_transaction(card_minus):
              if results:
                  cursor.execute('UPDATE Users SET balance = balance + ? WHERE card_num = ?', (x, m))
                  connection.commit()
-                 print("Успешно переведено пользователю " + m + " " + str(x) + "$\n")
+                 print("\nУспешно переведено пользователю " + m + " " + "сумма " + str(x) + "$\n")
              else:
                  print("Данного пользователя нету\n")
          else:
-             print("Нельзя пополнить на такую сумму, обратитесь в банк\n")
+             print("\nНельзя пополнить на такую сумму, обратитесь в банк\n")
     else:
         print("Даннного пользователя нету\n")
 
@@ -153,7 +153,7 @@ if users == "0000":
             a = input("введите номер карты: ")
             balance_card_admin(a)
         elif enter == "2":
-            b = input("введитье номер карты: ")
+            b = input("введите номер карты: ")
             replenish_admin(b)
         elif enter == "3":
             u = input("введите номер карты: ")
@@ -166,12 +166,12 @@ if users == "0000":
             users = cursor.fetchall()
 
             for res in users:
-                print("Пользователь: " + (res[0]))
+                print("\nПользователь: " + (res[0]))
                 print("Баланс: " + str(res[2]) + "$")
         elif enter == "6":
             break
         else:
-            print("Данного пункта нету, выберите другой")
+            print("\nДанного пункта нету, выберите другой\n")
 
 #Вызов меню ПОЛЬЗОВАТЕЛЯ!
 #========================================================================================================================
@@ -194,7 +194,7 @@ else:
             b = input("введите сумму для снятия: ")
             takeoff(b)
         elif a == "4":
-            print("Завершено")
+            print("\nСпасибо за обращение, всего доброго!\n")
             break
         else:
             print("неверный ввод ")
