@@ -1,10 +1,11 @@
 1. Установка sqllite 
 
 - обновите репозиторий
-apt-get update
+  - $ apt-get update
 
 - Пример установки на debian 12
-apt install sqlite3 
+-  $ apt install git
+-  $ apt install sqlite3 
 
 - Графичиская среда для 
 apt install sqlitebrowser
