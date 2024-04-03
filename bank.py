@@ -39,7 +39,7 @@ def balance_card(input_card_num):
 def replenish(input_balance):
     input_balance = int(input_balance)
     if input_balance >= 0 and input_balance < 10001:
-        cursor.execute('UPDATE Users SET balance = balance + ?', (int(input_balance),))
+        cursor.execute('UPDATE Users SET balance = balance + ? WHERE card_num = ?', (int(input_balance), users,))
         print("ваш счет пополнен на: " + str(input_balance) + "$")
     else:
         print("\nизвените нельзя пополнить на сумму свыше 10 000$, обратитесь в банк")
@@ -82,7 +82,7 @@ def replenish_admin(num):
      if results:
          x = input("введите сумму пополнения: ")
          if int(x) >=0:
-             cursor.execute('UPDATE Users SET balance = balance + ?', (int(x),))
+             cursor.execute('UPDATE Users SET balance = balance + ? WHERE card_num = ?', (int(x), num,))
              connection.commit()
              print("ваш счет пополнен на: " + x + "$\n")
          else:
