@@ -1,15 +1,17 @@
-1. Установка sqllite 
+- Пример установки на debian 12
 
 - обновите репозиторий
   - $ apt-get update
 
-- Пример установки на debian 12
--  $ apt install git
--  $ apt install sqlite3 
+-  Установите гит
+  -  $ apt install git
 
-- Графичиская среда для 
-apt install sqlitebrowser
+- Установите sqlite3
+  -  $ apt install sqlite3 
 
+- Графичиская среда для управления sqlite3
+- apt install sqlitebrowser
+;
 
 2. Клонируем репозиторий
 git clone https://github.com/Nikolay1257/Python_BankDB.git
