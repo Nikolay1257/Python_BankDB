@@ -49,7 +49,7 @@ def takeoff(balance):
     if int(balance) <=0:
         print("Ошибка пополнения")
     else:
-        cursor.execute('UPDATE Users SET balance = balance - ?', (int(balance),))
+        cursor.execute('UPDATE Users SET balance = balance - ? WHERE card_num = ?', (int(balance), users,))
         print("с вашего счета снято: " + balance + "$")
 
 # Отобразить всех пользователейы
@@ -98,7 +98,7 @@ def takeoff_admin(num):
      if results:
          x = input("введите сумму для снятия: ")
          if int(x) >=0:
-             cursor.execute('UPDATE Users SET balance = balance - ?', (int(x),))
+             cursor.execute('UPDATE Users SET balance = balance - ? WHERE card_num = ?', (int(x), num,))
              connection.commit()
              print("с вашего счета снято: " + x + "$\n")
          else:
@@ -167,7 +167,7 @@ if users == "0000":
 
             for res in users:
                 print("Пользователь: " + (res[0]))
-                print("Баланс: " + str(res[2]))
+                print("Баланс: " + str(res[2]) + "$")
         elif enter == "6":
             break
         else:
